@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 27.09.2020
- * Time: 17:12
- */
 
-interface Truck
+interface TruckInterface
 {
     
     public function setTypeEngine(): string;
@@ -21,7 +15,7 @@ interface Truck
     
     public function setInteriorColor(): string;
     
-    public function setCapacityTruck(): string;
+    public function setCapacityTruck(): float;
     
     public function setTruckBodyType(): string;
     

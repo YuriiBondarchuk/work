@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 27.09.2020
- * Time: 16:23
- */
+
+try {
+    if ( !file_exists("orderSetting.php")|| !file_exists("class\orderCar.php")) {
+        throw new Exception("File with require data for order not found");
+    }
+    require_once "orderSetting.php";
+    require_once "class\OrderCar.php";
+} catch (Exception $e) {
+    echo $e->getMessage() . "\n";
+}
+
+
