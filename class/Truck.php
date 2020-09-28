@@ -2,7 +2,7 @@
 
 require_once 'Mail.php';
 
-class Truck implements TruckInterface
+class Truck extends BaseCar implements TruckInterface
 {
     
     private $typeEngine = 'gasoline';
@@ -13,6 +13,8 @@ class Truck implements TruckInterface
     private $interiorColor = 'gray';
     private $capacityTruck = 20.0;
     private $truckBodyType = 'closed';
+    
+    private $firstPathMessage = 'The car ordered by you is installed ';
     
     public function __construct()
     {
@@ -27,63 +29,79 @@ class Truck implements TruckInterface
         $this->setTruckBodyType();
     }
     
-    public function setTypeEngine(): string
+    public function setTypeEngine()
     {
         
         if (defined('TYPE_ENGINE')) {
             $this->typeEngine = TYPE_ENGINE;
         }
-        Mail::sendMail(CLIENT_EMAIL, 'setTypeEngine', 'The  car ordered by you is installed ' . $this->typeEngine . ' engine');
-        Logger::getLogger($name)->log($data);
+        $message = $this->firstPathMessage . $this->typeEngine . ' engine';
+        $this->sentInformation($message);
     }
     
-    public function setEngineCapacity(): float
+    public function setEngineCapacity()
     {
         if (defined('ENGINE_CAPACITY')) {
             $this->engineCapacity = ENGINE_CAPACITY;
         }
+    
+        $message = $this->firstPathMessage . $this->engineCapacity . ' engine';
+        $this->sentInformation($message);
     }
     
-    public function setNumberSpeed(): int
+    public function setNumberSpeed()
     {
         if (defined('NUMBER_SPEEDS')) {
             $this->numberSpeed = NUMBER_SPEEDS;
         }
+        
+        $message = $this->firstPathMessage . $this->numberSpeed . ' speed';
+        $this->sentInformation($message);
     }
     
-    public function setColorAuto(): string
+    public function setColorAuto()
     {
         if (defined('COLOR_AUTO')) {
             $this->colorAuto = COLOR_AUTO;
         }
+        $message = $this->firstPathMessage . $this->colorAuto . ' color';
+        $this->sentInformation($message);
     }
     
-    public function setInteriorMaterial(): string
+    public function setInteriorMaterial()
     {
         if (defined('INTERIOR_MATERIAL')) {
             $this->interiorMaterial = INTERIOR_MATERIAL;
         }
+        $message = $this->firstPathMessage . $this->interiorMaterial . ' interior material';
+        $this->sentInformation($message);
     }
     
-    public function setInteriorColor(): string
+    public function setInteriorColor()
     {
         if (defined('INTERIOR_COLOR')) {
             $this->interiorColor = INTERIOR_COLOR;
         }
+    
+        $message = $this->firstPathMessage . $this->interiorColor . ' interior color';
+        $this->sentInformation($message);
     }
     
-    public function setCapacityTruck(): float
+    public function setCapacityTruck()
     {
         if (defined('CAPACITY_TRUCK')) {
             $this->capacityTruck = CAPACITY_TRUCK;
         }
+        $message = $this->firstPathMessage . $this->capacityTruck . ' capacity truck';
+        $this->sentInformation($message);
     }
     
-    public function setTruckBodyType(): string
+    public function setTruckBodyType()
     {
         if (defined('TRUCK_BODY_TYPE')) {
             $this->truckBodyType = TRUCK_BODY_TYPE;
         }
+        $message = $this->firstPathMessage . $this->truckBodyType . ' truck body type';
+        $this->sentInformation($message);
     }
-    
 }

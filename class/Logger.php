@@ -28,12 +28,15 @@ class Logger
         $this->fp = fopen($this->file == null ? self::$PATH . '/' . $this->name . '.log' : self::$PATH . '/' . $this->file, 'a+');
     }
     
-    public static function getLogger($name='root',$file=null){
-        if(!isset(self::$loggers[$name])){
-            self::$loggers[$name]=new Logger($name, $file);
-        }
+    public static function getLogger($name = 'root', $file = null)
+    {
+        if (defined('LOG_PROCESS') && LOG_PROCESS) {
+            if ( ! isset(self::$loggers[$name])) {
+                self::$loggers[$name] = new Logger($name, $file);
+            }
         
-        return self::$loggers[$name];
+            return self::$loggers[$name];
+        }
     }
     
     public function log($message){

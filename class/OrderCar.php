@@ -1,14 +1,19 @@
 <?php
 
+//require_once './../factory/CarFactory.php';
+
 class OrderCar
 {
-    protected function  buildCar(){
     
+    public function buildCar()
+    {
+        CarFactory::makeCar(TYPE_MACHINE);
     }
     
     protected function  printCharacteristics(){
     
     }
 }
+(new OrderCar())->buildCar();
 
 

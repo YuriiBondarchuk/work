@@ -2,7 +2,7 @@
 
 
 //data about car
-@define('TYPE_MACHINE', '');
+@define('TYPE_MACHINE', 'Truck'); //Car or Truck
 @define('ENGINE_TYPE', '');
 @define('ENGINE_CAPACITY', '');
 @define('TRANSMISSION_TYPE', '');
