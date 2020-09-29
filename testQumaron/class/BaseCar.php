@@ -28,7 +28,7 @@ class BaseCar
         $this->allCharacteristics .= $characteristic . '<br>';
     }
     
-    public function getAllCharacteristics()
+    public function printCharacteristics()
     {
         return $this->allCharacteristics;
     }

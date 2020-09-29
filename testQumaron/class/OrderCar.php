@@ -15,4 +15,4 @@ class OrderCar
 
 Mail::sendMail(CLIENT_EMAIL, 'The order has been fulfilled', OrderCar::$messageBuildCarFinished);
 $newCar = OrderCar::buildCar();
-echo $newCar->getAllCharacteristics();
+echo $newCar->printCharacteristics();
