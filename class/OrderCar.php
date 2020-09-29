@@ -1,19 +1,18 @@
 <?php
 
-//require_once './../factory/CarFactory.php';
 
 class OrderCar
 {
     
-    public function buildCar()
+    public static $messageBuildCarFinished = 'Your order has been completed';
+    
+    public static function buildCar()
     {
-        CarFactory::makeCar(TYPE_MACHINE);
+        return CarFactory::makeCar(TYPE_MACHINE);
     }
     
-    protected function  printCharacteristics(){
-    
-    }
 }
-(new OrderCar())->buildCar();
 
-
+Mail::sendMail(CLIENT_EMAIL, 'The order has been fulfilled', OrderCar::$messageBuildCarFinished);
+$newCar = OrderCar::buildCar();
+echo $newCar->getAllCharacteristics();

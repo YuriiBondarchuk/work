@@ -1,6 +1,5 @@
 <?php
 
-require_once 'Mail.php';
 
 class Truck extends BaseCar implements TruckInterface
 {
@@ -14,11 +13,9 @@ class Truck extends BaseCar implements TruckInterface
     private $capacityTruck = 20.0;
     private $truckBodyType = 'closed';
     
-    private $firstPathMessage = 'The car ordered by you is installed ';
-    
     public function __construct()
     {
-        
+        $this->setUserManagerData();
         $this->setTypeEngine();
         $this->setEngineCapacity();
         $this->setNumberSpeed();
@@ -37,6 +34,7 @@ class Truck extends BaseCar implements TruckInterface
         }
         $message = $this->firstPathMessage . $this->typeEngine . ' engine';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Type engine:' . $this->typeEngine);
     }
     
     public function setEngineCapacity()
@@ -44,9 +42,10 @@ class Truck extends BaseCar implements TruckInterface
         if (defined('ENGINE_CAPACITY')) {
             $this->engineCapacity = ENGINE_CAPACITY;
         }
-    
+        
         $message = $this->firstPathMessage . $this->engineCapacity . ' engine';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Engine capacity: ' . $this->engineCapacity);
     }
     
     public function setNumberSpeed()
@@ -57,6 +56,7 @@ class Truck extends BaseCar implements TruckInterface
         
         $message = $this->firstPathMessage . $this->numberSpeed . ' speed';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Number speed: ' . $this->numberSpeed);
     }
     
     public function setColorAuto()
@@ -66,6 +66,7 @@ class Truck extends BaseCar implements TruckInterface
         }
         $message = $this->firstPathMessage . $this->colorAuto . ' color';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Color auto: ' . $this->colorAuto);
     }
     
     public function setInteriorMaterial()
@@ -75,6 +76,7 @@ class Truck extends BaseCar implements TruckInterface
         }
         $message = $this->firstPathMessage . $this->interiorMaterial . ' interior material';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Interior material: ' . $this->interiorMaterial);
     }
     
     public function setInteriorColor()
@@ -82,9 +84,10 @@ class Truck extends BaseCar implements TruckInterface
         if (defined('INTERIOR_COLOR')) {
             $this->interiorColor = INTERIOR_COLOR;
         }
-    
+        
         $message = $this->firstPathMessage . $this->interiorColor . ' interior color';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Interior color: ' . $this->interiorColor);
     }
     
     public function setCapacityTruck()
@@ -94,6 +97,7 @@ class Truck extends BaseCar implements TruckInterface
         }
         $message = $this->firstPathMessage . $this->capacityTruck . ' capacity truck';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Capacity truck: ' . $this->capacityTruck);
     }
     
     public function setTruckBodyType()
@@ -103,5 +107,6 @@ class Truck extends BaseCar implements TruckInterface
         }
         $message = $this->firstPathMessage . $this->truckBodyType . ' truck body type';
         $this->sentInformation($message);
+        $this->setAllCharacteristics('Truck body type: ' . $this->truckBodyType);
     }
 }
