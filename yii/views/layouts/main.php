@@ -1,4 +1,12 @@
-<?php $this->beginPage() ?>
+<?php
+
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+
+$this->beginPage();
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +19,7 @@
 <body>
 <?php $this->beginBody() ?>
 <?
-\yii\bootstrap\NavBar::begin([
+NavBar::begin([
     'brandLabel' => 'ITVDN',
     'brandUrl'   => Yii::$app->homeUrl,
     'options'    => [
@@ -19,9 +27,16 @@
     ],
 
 ]);
-\yii\bootstrap\NavBar::end();
+$items = [
+    ['label' => 'Join', 'url' => ['/site/join']],
+    ['label' => 'Login', 'url' => ['/site/login']],
+];
+echo Nav::widget([
+    'options' => ['class' => 'navbar-nav navbar-right'],
+    'items'  => $items,
+]);
+NavBar::end();
 ?>
-
 <div class="container" style="margin-top: 60px">
     <?= $content ?>
 </div>
